@@ -3,6 +3,14 @@ Find the minimum number of coins required to make n cents.
 You can use standard American denominations, that is, 1¢, 5¢, 10¢, and 25¢.
 '''
 
+'''
+Time complexity: O(n)
+nested loop only runs four times, so the loops have runtime of about 4n
+creating an array takes n time.
+
+space complexity: O(n)
+need an array of size n+1 to store solutions to previous steps
+'''
 def makeChange(n):
     coins = [1,5,10,25]
 

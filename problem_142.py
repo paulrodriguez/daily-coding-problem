@@ -30,11 +30,11 @@ def balanced_string(s):
             else:
                 return False
     
-    i = 0
-    while i < len(ast):
+    i = len(ast) - 1 
+    while i >= 0:
         if len(opened) > 0 and opened[-1][1] < ast[i][1]:
             opened.pop()
-        i += 1
+        i -= 1
 
     if len(opened) > 0:
         return False

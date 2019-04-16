@@ -3,7 +3,7 @@ implement three stacks using a single list
 '''
 
 class Stack():
-    def __init(self):
+    def __init__(self):
         self.list = []
     
 
@@ -17,22 +17,37 @@ class Stack():
             self.list.append(stack.pop())
 
     def pop(self,stack_number):
-        if self.validStackNumber(stack_number) == False
+        if self.validStackNumber(stack_number) == False:
             return
         tmp = []
 
         while len(self.list) > 0:
             val, n = self.list.pop()
-            if self.list[-1][1] == stack_number:
+            if n == stack_number:
                 self.insert(tmp)              
                 return val
             else:
                 tmp.append((val,n))
         self.insert(tmp)
+        return None
 
     def push(self,item,stack_number):
         if self.validStackNumber(stack_number) == False:
             return
-        pass
 
         self.list.append((item,stack_number))
+
+
+s = Stack()
+s.push(3,1)
+s.push(8,1)
+s.push(6,2)
+s.push(5,3)
+s.push(4,3)
+s.push(9,3)
+assert s.pop(1) == 8
+print(s.list)
+assert s.pop(2) == 6
+print(s.list)
+assert s.pop(3) == 9
+print(s.list)

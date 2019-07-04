@@ -6,6 +6,11 @@ Write a program that returns the correct order of letters in this language.
 def alienDictionary(words):
 	degrees = {}
 	graph = {}
+	
+	for w in words:
+		for l in w:
+			degrees[l] = 0
+			graph[l] = set()
 
 	for i in range(len(words)-1):
 		for j in range(i+1,len(words)):
@@ -16,33 +21,17 @@ def alienDictionary(words):
 				y += 1
 
 			if x == len(words[i]):
-				for l in words[j]:
-					if l not in degrees:
-						degrees[l] = 0
-					if l not in graph:
-						graph[l] = set()
-
+				pass
 			elif y == len(words[j]):
-				for l in words[i]:
-					if l not in degrees:
-						degrees[l] = 0
-					if l not in graph:
-						graph[l] = set()
-
+				pass
 			else:
 				l = words[i][x]
 				ll = words[j][y]
-				if l not in degrees:
-					degrees[l] = 0
-				if l not in graph:
-					graph[l] = set()
 				
 				skip = True if ll in graph[l] else False
 
 				graph[l].add(ll)
 				
-				if ll not in degrees:
-					degrees[ll] = 0
 
 				if skip == False:
 					degrees[ll] += 1
@@ -58,11 +47,10 @@ def alienDictionary(words):
 		tmp_queue = []
 		for l in queue:
 			res.append(l)
-			if l in graph:
-				for ll in graph[l]:
-					degrees[ll] -= 1
-					if degrees[ll] == 0:
-						tmp_queue.append(ll)
+			for ll in graph[l]:
+				degrees[ll] -= 1
+				if degrees[ll] == 0:
+					tmp_queue.append(ll)
 
 		queue = tmp_queue
 
